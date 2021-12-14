@@ -34,28 +34,13 @@ return [
             'driver' => 'sync',
         ],
 
-        // 'database' => [
-        //     'driver' => 'mongodb',
-        //     // You can also specify your jobs specific database created on config/database.php
-        //     'connection' => env('DB_CONNECTION', 'mongodb'),
-        //     'table' => 'jobs',
-        //     'queue' => 'default',
-        //     'retry_after' => 90,
-
-        // ],
         'database' => [
-
             'driver' => 'mongodb',
-
             // You can also specify your jobs specific database created on config/database.php
-
-            'connection' => 'mongodb',
-
+            'connection' => env('DB_CONNECTION', 'mongodb-job'),
             'table' => 'jobs',
-
             'queue' => 'default',
-
-            'retry_after' => 60
+            'retry_after' => 90,
 
         ],
 
@@ -104,7 +89,7 @@ return [
     'failed' => [
         'driver' => 'mongodb',
         // You can also specify your jobs specific database created on config/database.php
-        'database' => env('DB_CONNECTION', 'mongodb'),
+        'database' => env('DB_CONNECTION', 'mongodb-job'),
         'table' => 'failed_jobs',
     ],
 

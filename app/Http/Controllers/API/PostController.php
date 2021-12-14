@@ -127,19 +127,16 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
     */
     public function GetPost(SearchPostRequest $reqeust,$id){
-        try{
+        // try{
             $user=request()->user_data;
             $post=Post::where('user_id',strval($user->_id));
             foreach (request()->all() as $key => $value)          //Take Changes in Array
-                if (in_array($key, ['image_name', 'extension', 'visibility']))
-                    $updation[$key] = $value;
-                    dd($updation);
-                    $post->where('visibility','like',"%".request('visibility')."%");
-                $data = $image->where($updation)->get();
-                if ($data != null)
-                    return response()->json($data);
-                else
-                    return response(["message" => "data not found"], 404);
+            {
+                if (in_array($key, ['image_name', 'visibility']))
+                {
+                    $post->where($key,'like',"%".$value."%");
+                }
+            }
 
             // $posts = Post::where('created_at', '=', Carbon::today()->toDateString())->get();
             // dd($posts);
@@ -150,6 +147,9 @@ class PostController extends Controller
 
             // }
 
+            if(request()->has('extension')){
+                $post->where('image_name','like',"%".request('extension')."%");
+            }
             $post=$post->paginate(10);
 
             if(!empty($post)){
@@ -158,10 +158,10 @@ class PostController extends Controller
             else{
                 return response()->error(['message'=>"Something Went Wrong!!"], 401);
             }
-        }
-        catch (\Exception $e) {
-            return response()->error(['message'=>$e->getMessage()], 500);
-        }
+        // }
+        // catch (\Exception $e) {
+        //     return response()->error(['message'=>$e->getMessage()], 500);
+        // }
     }
 
     /**

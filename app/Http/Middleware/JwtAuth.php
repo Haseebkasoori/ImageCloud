@@ -35,9 +35,9 @@ class JwtAuth
             }else{
                 return $next($request);
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             if ($e instanceof \Firebase\JWT\SignatureInvalidException){
-                return response()->error(['message' => 'Token is Invalid'],422);
+                return response()->error(['message' => 'Token is Invalid/Empty'],422);
             }else if ($e instanceof \Firebase\JWT\ExpiredException){
                 return response()->error(['message' => 'Token is Expired'],422);
             }else if ($e instanceof \Firebase\JWT\BeforeValidException){
