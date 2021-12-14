@@ -130,6 +130,17 @@ class PostController extends Controller
         try{
             $user=request()->user_data;
             $post=Post::where('user_id',strval($user->_id));
+            foreach (request()->all() as $key => $value)          //Take Changes in Array
+                if (in_array($key, ['image_name', 'extension', 'visibility']))
+                    $updation[$key] = $value;
+                    dd($updation);
+                    $post->where('visibility','like',"%".request('visibility')."%");
+                $data = $image->where($updation)->get();
+                if ($data != null)
+                    return response()->json($data);
+                else
+                    return response(["message" => "data not found"], 404);
+
             // $posts = Post::where('created_at', '=', Carbon::today()->toDateString())->get();
             // dd($posts);
             // if(request()->has('created_at')){
@@ -138,15 +149,6 @@ class PostController extends Controller
             // if(request()->has('today')){
 
             // }
-            if(request()->has('image_name')){
-                $post->where('image_name','like',"%".request('image_name')."%");
-            }
-            elseif(request()->has('extension')){
-                $post->where('image_name','like',"%".request('extension'));
-            }
-            elseif(request()->has('visibility')){
-                $post->where('visibility','like',"%".request('visibility')."%");
-            }
 
             $post=$post->paginate(10);
 

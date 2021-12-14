@@ -34,17 +34,24 @@ return [
     */
 
     'connections' => [
+        // 'mongodb' => [
+        //     'driver'   => 'mongodb',
+        //     'host'     => env('MONGO_DB_HOST', 'localhost'),
+        //     'port'     => env('MONGO_DB_PORT', 27017),
+        //     'database' => env('MONGO_DB_DATABASE','ImageCloud'),
+        //     'username' => env('MONGO_DB_USERNAME'),
+        //     'password' => env('MONGO_DB_PASSWORD'),
+        //     'options'  => [],
+
+        //     'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // required with Mongo 3+
+        // ],
+
         'mongodb' => [
             'driver'   => 'mongodb',
-            'host'     => env('MONGO_DB_HOST', 'localhost'),
-            'port'     => env('MONGO_DB_PORT', 27017),
-            'database' => env('MONGO_DB_DATABASE','ImageCloud'),
-            'username' => env('MONGO_DB_USERNAME'),
-            'password' => env('MONGO_DB_PASSWORD'),
-            'options'  => [],
-
-            'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // required with Mongo 3+
+            'dns'      => env('DB_URI','mongodb+srv://Haseeb:HaseebAshraf@cluster0.gwbbt.mongodb.net/ImageCloud?retryWrites=true&w=majority'),
+            'database' => 'ImageCloud'
         ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
