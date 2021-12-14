@@ -49,7 +49,7 @@ return [
         'mongodb' => [
             'driver'   => 'mongodb',
             'dsn' => env('DB_URI', 'mongodb://Haseeb:HaseebAshraf@cluster0-shard-00-02.gwbbt.mongodb.net:27017,cluster0-shard-00-00.gwbbt.mongodb.net:27017,cluster0-shard-00-01.gwbbt.mongodb.net:27017/ImageCloud?ssl=true&replicaSet=atlas-7r7jn4-shard-0&authSource=admin&retryWrites=true&w=majority'),
-            'database' => 'ImageCloud'
+            'database' => 'ImageCloud',
         ],
 
         'sqlite' => [
