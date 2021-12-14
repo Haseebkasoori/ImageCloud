@@ -94,33 +94,33 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
-        'mongodb' => [
+        // 'mongodb' => [
 
-            'driver' => 'mongodb',
+        //     'driver' => 'mongodb',
 
-            'host' => env('DB_HOST', '127.0.0.1'),
+        //     'host' => env('DB_HOST', '127.0.0.1'),
 
-            'port' => env('DB_PORT', 27017),
+        //     'port' => env('DB_PORT', 27017),
 
-            'database' => env('DB_DATABASE'),
+        //     'database' => env('DB_DATABASE'),
 
-            'username' => env('DB_USERNAME'),
+        //     'username' => env('DB_USERNAME'),
 
-            'password' => env('DB_PASSWORD'),
+        //     'password' => env('DB_PASSWORD'),
 
-            'options' => [
+        //     'options' => [
 
-                // here you can pass more settings to the Mongo Driver Manager
+        //         // here you can pass more settings to the Mongo Driver Manager
 
-                // see https://www.php.net/manual/en/mongodb-driver-manager.construct.php under "Uri Options" for a list of complete parameters that you can use
+        //         // see https://www.php.net/manual/en/mongodb-driver-manager.construct.php under "Uri Options" for a list of complete parameters that you can use
 
 
 
-                'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // required with Mongo 3+
+        //         'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // required with Mongo 3+
 
-            ],
+        //     ],
 
-        ],
+        // ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
